@@ -98,6 +98,7 @@ function OnKeyDown(Int KeyCode)
 				if SkillsMatch.GetValue() == 1 as Float || EquippedWeaponRight.GetSkill() != WeaponSkill
 					EquippedWeaponRight.SetSkill(WeaponSkill)
 				endIf
+				self.DamageChangeMaintenance()
 				if !(PlayerRef as objectreference).GetAnimationVariableBool("IsAttacking")
 					SwitchBackSound.Play(PlayerRef as objectreference)
 				endIf
@@ -130,6 +131,7 @@ function OnKeyDown(Int KeyCode)
 						EquippedWeaponRight.SetSkill("OneHanded")
 					endIf
 				endIf
+				self.DamageChangeMaintenance()
 			endIf
 			if !(PlayerRef as objectreference).GetAnimationVariableBool("IsAttacking")
 				SwitchToSound.Play(PlayerRef as objectreference)
@@ -202,26 +204,28 @@ function OnObjectEquipped(form akBaseObject, objectreference akReference)
 	endIf
 	
 	if akBaseObject as Bool && (akBaseObject as weapon) as Bool && akBaseObject as weapon == PlayerRef.GetEquippedWeapon(false)
-		ScriptON = true
-		weapon akWeapon = akBaseObject as weapon
-		
-		; Reset grip to normal
-		PlayerRef.SetAnimationVariableBool("bSwitchGrips", false)
-		
-		if akWeapon.GetWeaponType() >= 1 && akWeapon.GetWeaponType() <= 6
-			EquippedWeaponRight = akWeapon
-			WeaponTypeRight = EquippedWeaponRight.GetWeaponType()
-			WeaponSkill = EquippedWeaponRight.GetSkill()
-		elseIf (WeaponTypeRight == 5 || WeaponTypeRight == 6) && EquippedWeaponRight.GetEquipType() != OneHandedSlot
-			NoEquipEvents = true
-			PlayerRef.UnequipItem(EquippedWeaponRight as form, false, true)
-			EquippedWeaponRight.SetEquipType(OneHandedSlot)
-			PlayerRef.EquipItem(EquippedWeaponRight as form, false, true)
-			utility.waitmenumode(0.250000)
-			NoEquipEvents = false
+		if !NoEquipEvents
+			ScriptON = true
+			weapon akWeapon = akBaseObject as weapon
+			
+			; Reset grip to normal
+			PlayerRef.SetAnimationVariableBool("bSwitchGrips", false)
+			
+			if akWeapon.GetWeaponType() >= 1 && akWeapon.GetWeaponType() <= 6
+				EquippedWeaponRight = akWeapon
+				WeaponTypeRight = EquippedWeaponRight.GetWeaponType()
+				WeaponSkill = EquippedWeaponRight.GetSkill()
+			elseIf (WeaponTypeRight == 5 || WeaponTypeRight == 6) && EquippedWeaponRight.GetEquipType() != OneHandedSlot
+				NoEquipEvents = true
+				PlayerRef.UnequipItem(EquippedWeaponRight as form, false, true)
+				EquippedWeaponRight.SetEquipType(OneHandedSlot)
+				PlayerRef.EquipItem(EquippedWeaponRight as form, false, true)
+				utility.waitmenumode(0.250000)
+				NoEquipEvents = false
+			endIf
+			ScriptON = false
 		endIf
 	endIf
-	ScriptON = false
 endFunction
 
 function Initialization()
