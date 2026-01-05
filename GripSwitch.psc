@@ -157,28 +157,36 @@ function OnObjectEquipped(form akBaseObject, objectreference akReference)
 	while ScriptON as Bool || DelayOnObjectEquippedEvent as Bool
 		utility.waitmenumode(0.100000)
 	endWhile
+	
+	; Check if something is being equipped in left hand
+	if akBaseObject as Bool && akBaseObject == PlayerRef.GetEquippedObject(0)
+		Bool shouldBlockLeftHand = false
+		
+		; Block left hand if 2H weapon in right hand with normal grip
+		if EquippedWeaponRight && (WeaponTypeRight == 5 || WeaponTypeRight == 6) && !PlayerRef.GetAnimationVariableBool("bSwitchGrips")
+			shouldBlockLeftHand = true
+		endIf
+		
+		; Block left hand if 1H weapon in right hand with switched grip
+		if EquippedWeaponRight && WeaponTypeRight >= 1 && WeaponTypeRight <= 4 && PlayerRef.GetAnimationVariableBool("bSwitchGrips")
+			shouldBlockLeftHand = true
+		endIf
+		
+		if shouldBlockLeftHand
+			PlayerRef.UnequipItem(akBaseObject, false, true)
+			debug.Notification("Switch grip first to use left hand")
+			return
+		endIf
+	endIf
+	
 	if akBaseObject as Bool && (akBaseObject as weapon) as Bool && akBaseObject as weapon == PlayerRef.GetEquippedWeapon(false)
 		ScriptON = true
 		weapon akWeapon = akBaseObject as weapon
-		
-		; Check if this is a different weapon than previously equipped
-		Bool isDifferentWeapon = false
-		if EquippedWeaponRight && akWeapon != EquippedWeaponRight
-			isDifferentWeapon = true
-		endIf
 		
 		; Reset grip to normal
 		PlayerRef.SetAnimationVariableBool("bSwitchGrips", false)
 		
 		if akWeapon.GetWeaponType() >= 1 && akWeapon.GetWeaponType() <= 6
-			; If different weapon, unequip left hand
-			if isDifferentWeapon
-				weapon leftWeapon = PlayerRef.GetEquippedWeapon(true)
-				if leftWeapon
-					PlayerRef.UnequipItem(leftWeapon as form, false, true)
-				endIf
-			endIf
-			
 			EquippedWeaponRight = akWeapon
 			WeaponTypeRight = EquippedWeaponRight.GetWeaponType()
 			WeaponSkill = EquippedWeaponRight.GetSkill()
