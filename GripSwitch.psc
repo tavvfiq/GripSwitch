@@ -76,19 +76,22 @@ function OnKeyDown(Int KeyCode)
 				; Store right hand weapon before unequipping left hand
 				weapon rightHandWeapon = EquippedWeaponRight
 				
+				NoEquipEvents = true
+				
 				; Unequip left hand weapon when switching back to normal grip
 				weapon leftWeapon = PlayerRef.GetEquippedWeapon(true)
 				if leftWeapon
-					NoEquipEvents = true
 					PlayerRef.UnequipItem(leftWeapon as form, false, true)
 					utility.waitmenumode(0.100000)
-					NoEquipEvents = false
 				endIf
 				
 				; Ensure right hand weapon stays equipped
 				if PlayerRef.GetEquippedWeapon(false) != rightHandWeapon
 					PlayerRef.EquipItem(rightHandWeapon as form, false, true)
+					utility.waitmenumode(0.100000)
 				endIf
+				
+				NoEquipEvents = false
 				
 				if WeaponTypeRight >= 1 && WeaponTypeRight <= 4
 					
@@ -108,19 +111,22 @@ function OnKeyDown(Int KeyCode)
 				; Store right hand weapon before unequipping left hand
 				weapon rightHandWeapon = EquippedWeaponRight
 				
+				NoEquipEvents = true
+				
 				; Unequip left hand weapon when switching to two-handed grip
 				weapon leftWeapon = PlayerRef.GetEquippedWeapon(true)
 				if leftWeapon
-					NoEquipEvents = true
 					PlayerRef.UnequipItem(leftWeapon as form, false, true)
 					utility.waitmenumode(0.100000)
-					NoEquipEvents = false
 				endIf
 				
 				; Ensure right hand weapon stays equipped
 				if PlayerRef.GetEquippedWeapon(false) != rightHandWeapon
 					PlayerRef.EquipItem(rightHandWeapon as form, false, true)
+					utility.waitmenumode(0.100000)
 				endIf
+				
+				NoEquipEvents = false
 				
 				if WeaponTypeRight >= 1 && WeaponTypeRight <= 4
 					if SkillsMatch.GetValue() == 1 as Float
