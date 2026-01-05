@@ -158,6 +158,27 @@ function OnObjectEquipped(form akBaseObject, objectreference akReference)
 		utility.waitmenumode(0.100000)
 	endWhile
 	
+	; Check if something is being equipped in left hand
+	utility.waitmenumode(0.100000)
+	if akBaseObject == PlayerRef.GetEquippedObject(0)
+		Bool shouldBlockLeftHand = false
+			
+		; Block left hand if 2H weapon in right hand with normal grip
+		if EquippedWeaponRight && (WeaponTypeRight == 5 || WeaponTypeRight == 6) && !PlayerRef.GetAnimationVariableBool("bSwitchGrips")
+			shouldBlockLeftHand = true
+		endIf
+			
+		; Block left hand if 1H weapon in right hand with switched grip
+		if EquippedWeaponRight && WeaponTypeRight >= 1 && WeaponTypeRight <= 4 && PlayerRef.GetAnimationVariableBool("bSwitchGrips")
+			shouldBlockLeftHand = true
+		endIf
+			
+		if shouldBlockLeftHand
+			PlayerRef.UnequipItem(akBaseObject, false, true)
+			debug.Notification("Switch grip first to use left hand")
+		endIf
+	endIf
+	
 	if akBaseObject as Bool && (akBaseObject as weapon) as Bool && akBaseObject as weapon == PlayerRef.GetEquippedWeapon(false)
 		ScriptON = true
 		weapon akWeapon = akBaseObject as weapon
@@ -177,29 +198,9 @@ function OnObjectEquipped(form akBaseObject, objectreference akReference)
 			utility.waitmenumode(0.250000)
 			NoEquipEvents = false
 		endIf
-		ScriptON = false
-	elseIf akBaseObject as Bool
-		; Check if something is being equipped in left hand
-		utility.waitmenumode(0.100000)
-		if akBaseObject == PlayerRef.GetEquippedObject(0)
-			Bool shouldBlockLeftHand = false
-			
-			; Block left hand if 2H weapon in right hand with normal grip
-			if EquippedWeaponRight && (WeaponTypeRight == 5 || WeaponTypeRight == 6) && !PlayerRef.GetAnimationVariableBool("bSwitchGrips")
-				shouldBlockLeftHand = true
-			endIf
-			
-			; Block left hand if 1H weapon in right hand with switched grip
-			if EquippedWeaponRight && WeaponTypeRight >= 1 && WeaponTypeRight <= 4 && PlayerRef.GetAnimationVariableBool("bSwitchGrips")
-				shouldBlockLeftHand = true
-			endIf
-			
-			if shouldBlockLeftHand
-				PlayerRef.UnequipItem(akBaseObject, false, true)
-				debug.Notification("Switch grip first to use left hand")
-			endIf
-		endIf
 	endIf
+	ScriptON = false
+endFunction
 
 function Initialization()
 
