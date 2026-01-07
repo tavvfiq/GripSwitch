@@ -2,6 +2,8 @@
 
 A dynamic weapon grip switching system for Skyrim Special Edition and Enderal that allows you to seamlessly switch between one-handed and two-handed grips on your weapons.
 
+Code base from mod  [Skysa Grip Switch](https://www.nexusmods.com/skyrimspecialedition/mods/54056?tab=posts) with some modification to decouple dependencies of SkySA itself. Please endorse the mod!
+
 ## Features
 
 ### Core Functionality
