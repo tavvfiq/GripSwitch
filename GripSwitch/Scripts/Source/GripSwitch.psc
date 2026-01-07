@@ -103,10 +103,11 @@ function OnKeyDown(Int KeyCode)
 	ScriptON = true
 	if EquippedWeaponRight as Bool && EquippedWeaponRight == PlayerRef.GetEquippedWeapon(false) && PlayerRef.IsWeaponDrawn()
 		if KeyCode as Float == GripHotkey.GetValue() && GripHotkey_ModifierEnabled.GetValue() == 0 as Float || KeyCode as Float == GripHotkey.GetValue() && GripHotkey_ModifierEnabled.GetValue() == 1 as Float && GripHotkey_ModifierIsHeld as Bool
-			weapon leftWeapon = PlayerRef.GetEquippedWeapon(true)
-			if leftWeapon
+			; Unequip left hand item (weapon, spell, shield, etc.)
+			form leftItem = PlayerRef.GetEquippedObject(0)
+			if leftItem
 				NoEquipEvents = true
-				PlayerRef.UnequipItem(leftWeapon as form, false, true)
+				PlayerRef.UnequipItem(leftItem, false, true)
 				NoEquipEvents = false
 			endIf
 			
