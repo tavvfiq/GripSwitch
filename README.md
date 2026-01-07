@@ -131,11 +131,10 @@ A spell-based system adjusts weapon damage based on the configured percentage. T
 
 ## Credits
 
-- Original GripSwitch concept and implementation
+- [PossiblyShiba](https://www.nexusmods.com/profile/PossiblyShiba?gameId=1704) for Original GripSwitch concept and implementation for SkySA
 - SKSE Team - For Skyrim Script Extender
 - SkyUI Team - For MCM framework
-- Ersh - For Open Animation Replacer
-- Community testers and contributors
+- [Ershin](https://www.nexusmods.com/profile/Ershin?gameId=1704) - For Open Animation Replacer
 
 ## Version History
 
