@@ -1,0 +1,9 @@
+		<hkobject name="#4275" class="BSBoneSwitchGeneratorBoneData" signature="0xc1215be6">
+			<hkparam name="variableBindingSet">#4319</hkparam>
+<!-- MOD_CODE ~grips~ OPEN -->
+			<hkparam name="pGenerator">#grips$221</hkparam>
+<!-- ORIGINAL -->
+			<hkparam name="pGenerator">#4277</hkparam>
+<!-- CLOSE -->
+			<hkparam name="spBoneWeight">#4276</hkparam>
+		</hkobject>

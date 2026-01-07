@@ -1,0 +1,7 @@
+		<hkobject name="#grips$2" class="hkbEvaluateExpressionModifier" signature="0xf900f6be">
+			<hkparam name="variableBindingSet">#grips$1</hkparam>
+			<hkparam name="userData">2</hkparam>
+			<hkparam name="name">ForceWantBlock_EEM</hkparam>
+			<hkparam name="enable">true</hkparam>
+			<hkparam name="expressions">#grips$0</hkparam>
+		</hkobject>

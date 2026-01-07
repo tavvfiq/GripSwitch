@@ -1,0 +1,30 @@
+		<hkobject name="#grips$50" class="BSDirectAtModifier" signature="0x19a005c0">
+			<hkparam name="variableBindingSet">#grips$51</hkparam>
+			<hkparam name="userData">0</hkparam>
+			<hkparam name="name">BlockAnticipate_2HM_BSDirectAtModifier</hkparam>
+			<hkparam name="enable">true</hkparam>
+			<hkparam name="directAtTarget">true</hkparam>
+			<hkparam name="sourceBoneIndex">-1</hkparam>
+			<hkparam name="startBoneIndex">24</hkparam>
+			<hkparam name="endBoneIndex">26</hkparam>
+			<hkparam name="limitHeadingDegrees">60.000000</hkparam>
+			<hkparam name="limitPitchDegrees">65.000000</hkparam>
+			<hkparam name="offsetHeadingDegrees">20.000000</hkparam>
+			<hkparam name="offsetPitchDegrees">-20.000000</hkparam>
+			<hkparam name="onGain">0.250000</hkparam>
+			<hkparam name="offGain">0.080000</hkparam>
+			<hkparam name="targetLocation">
+				0.000000
+				0.000000
+				0.000000
+				0.000000
+			</hkparam>
+			<hkparam name="userInfo">1</hkparam>
+			<hkparam name="directAtCamera">false</hkparam>
+			<hkparam name="directAtCameraX">0.000000</hkparam>
+			<hkparam name="directAtCameraY">0.000000</hkparam>
+			<hkparam name="directAtCameraZ">0.000000</hkparam>
+			<hkparam name="active">false</hkparam>
+			<hkparam name="currentHeadingOffset">0.000000</hkparam>
+			<hkparam name="currentPitchOffset">0.000000</hkparam>
+		</hkobject>

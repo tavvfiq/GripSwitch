@@ -10,7 +10,7 @@
       "Math Statement": {
         "expression": "bSwitchGrips == 1",
         "variables": {
-          "bSwitchGrips": {
+          "bswitchgrips": {
             "graphVariable": "bSwitchGrips",
             "graphVariableType": "Bool"
           }
@@ -20,15 +20,15 @@
     {
       "condition": "AND",
       "requiredVersion": "1.0.0.0",
-      "conditions": [
+      "Conditions": [
         {
           "condition": "OR",
           "requiredVersion": "1.0.0.0",
-          "conditions": [
+          "Conditions": [
             {
               "condition": "OR",
               "requiredVersion": "1.0.0.0",
-              "conditions": [
+              "Conditions": [
                 {
                   "condition": "IsEquippedType",
                   "requiredVersion": "1.0.0.0",
@@ -70,7 +70,7 @@
             {
               "condition": "OR",
               "requiredVersion": "1.0.0.0",
-              "conditions": [
+              "Conditions": [
                 {
                   "condition": "IsEquippedType",
                   "requiredVersion": "1.0.0.0",
@@ -96,11 +96,11 @@
         {
           "condition": "OR",
           "requiredVersion": "1.0.0.0",
-          "conditions": [
+          "Conditions": [
             {
               "condition": "OR",
               "requiredVersion": "1.0.0.0",
-              "conditions": [
+              "Conditions": [
                 {
                   "condition": "IsEquippedType",
                   "requiredVersion": "1.0.0.0",
@@ -142,7 +142,7 @@
             {
               "condition": "OR",
               "requiredVersion": "1.0.0.0",
-              "conditions": [
+              "Conditions": [
                 {
                   "condition": "IsEquippedType",
                   "requiredVersion": "1.0.0.0",

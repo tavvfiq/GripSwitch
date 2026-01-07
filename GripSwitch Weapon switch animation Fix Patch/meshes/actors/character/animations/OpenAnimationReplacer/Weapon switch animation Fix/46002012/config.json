@@ -17,7 +17,7 @@
             "Math Statement": {
                 "expression": "bSwitchGrips == 0",
                 "variables": {
-                    "bSwitchGrips": {
+                    "bswitchgrips": {
                         "graphVariable": "bSwitchGrips",
                         "graphVariableType": "Bool"
                     }

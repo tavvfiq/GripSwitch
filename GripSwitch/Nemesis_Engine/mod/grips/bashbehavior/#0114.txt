@@ -1,0 +1,31 @@
+		<hkobject name="#0114" class="hkbManualSelectorGenerator" signature="0xd932fab8">
+			<hkparam name="variableBindingSet">#0131</hkparam>
+			<hkparam name="userData">0</hkparam>
+			<hkparam name="name">BlockBashPowerMSG</hkparam>
+			<hkparam name="generators" numelements="13">
+				#0121
+<!-- MOD_CODE ~grips~ OPEN -->
+				#0117
+				#0117
+				#0117
+				#0117
+				#0117
+				#0117
+<!-- ORIGINAL -->
+				#0129
+				#0129
+				#0129
+				#0129
+				#0127
+				#0125
+<!-- CLOSE -->
+				#0123
+				#0121
+				#0121
+				#0119
+				#0117
+				#0115
+			</hkparam>
+			<hkparam name="selectedGeneratorIndex">0</hkparam>
+			<hkparam name="currentGeneratorIndex">0</hkparam>
+		</hkobject>

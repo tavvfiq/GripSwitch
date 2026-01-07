@@ -1,0 +1,10 @@
+		<hkobject name="#grips$211" class="hkbManualSelectorGenerator" signature="0xd932fab8">
+			<hkparam name="variableBindingSet">#grips$219</hkparam>
+			<hkparam name="userData">0</hkparam>
+			<hkparam name="name">Weap_Idle_NPCTest_MSG</hkparam>
+			<hkparam name="generators" numelements="2">
+				#grips$214 #grips$212
+			</hkparam>
+			<hkparam name="selectedGeneratorIndex">0</hkparam>
+			<hkparam name="currentGeneratorIndex">0</hkparam>
+		</hkobject>

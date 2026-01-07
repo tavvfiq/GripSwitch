@@ -1,0 +1,30 @@
+		<hkobject name="#0296" class="hkbManualSelectorGenerator" signature="0xd932fab8">
+			<hkparam name="variableBindingSet">#0311</hkparam>
+			<hkparam name="userData">0</hkparam>
+			<hkparam name="name">BlockIdle_MSG</hkparam>
+			<hkparam name="generators" numelements="12">
+				#0299
+<!-- MOD_CODE ~grips~ OPEN -->
+				#0297
+				#0297
+				#0297
+				#0297
+				#0297
+				#0297
+<!-- ORIGINAL -->
+				#0310
+				#0310
+				#0310
+				#0310
+				#0303
+				#0303
+<!-- CLOSE -->
+				#0302
+				#0299
+				#0299
+				#0298
+				#0297
+			</hkparam>
+			<hkparam name="selectedGeneratorIndex">0</hkparam>
+			<hkparam name="currentGeneratorIndex">0</hkparam>
+		</hkobject>

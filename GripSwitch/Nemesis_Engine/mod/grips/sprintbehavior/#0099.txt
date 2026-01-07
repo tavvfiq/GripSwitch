@@ -1,0 +1,27 @@
+		<hkobject name="#0099" class="hkbManualSelectorGenerator" signature="0xd932fab8">
+			<hkparam name="variableBindingSet">#0098</hkparam>
+			<hkparam name="userData">0</hkparam>
+			<hkparam name="name">SprintLeftSideManualSelectorGenerator</hkparam>
+			<hkparam name="generators" numelements="13">
+				#0094
+				#0112
+				#0112
+				#0112
+				#0112
+<!-- MOD_CODE ~grips~ OPEN -->
+				#0112
+				#0112
+<!-- ORIGINAL -->
+				#0110
+				#0108
+<!-- CLOSE -->
+				#0106
+				#0105
+				#0103
+				#0101
+				#0097
+				#0100
+			</hkparam>
+			<hkparam name="selectedGeneratorIndex">0</hkparam>
+			<hkparam name="currentGeneratorIndex">0</hkparam>
+		</hkobject>

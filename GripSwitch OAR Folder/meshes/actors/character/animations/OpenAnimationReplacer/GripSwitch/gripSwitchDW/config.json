@@ -1,171 +1,175 @@
 {
-  "name": "dynamicGripDW",
-  "description": "dual weild grip",
-  "priority": 880200,
-  "conditions": [
-    {
-      "condition": "MathStatement",
-      "requiredPlugin": "OpenAnimationReplacer-Math",
-      "requiredVersion": "1.0.0.0",
-      "Math Statement": {
-        "expression": "bSwitchGrips == 1",
-        "variables": {
-          "bSwitchGrips": {
-            "graphVariable": "bSwitchGrips",
-            "graphVariableType": "Bool"
-          }
-        }
-      }
-    },
-    {
-      "condition": "AND",
-      "requiredVersion": "1.0.0.0",
-      "conditions": [
+    "name": "dynamicGripDW",
+    "description": "dual weild grip",
+    "priority": 880200,
+    "conditions": [
         {
-          "condition": "OR",
-          "requiredVersion": "1.0.0.0",
-          "conditions": [
-            {
-              "condition": "OR",
-              "requiredVersion": "1.0.0.0",
-              "conditions": [
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 1.0
-                  },
-                  "Left hand": false,
-                  "negated": false
-                },
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 2.0
-                  },
-                  "Left hand": false,
-                  "negated": false
-                },
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 3.0
-                  },
-                  "Left hand": false,
-                  "negated": false
-                },
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 4.0
-                  },
-                  "Left hand": false,
-                  "negated": false
+            "condition": "MathStatement",
+            "requiredPlugin": "OpenAnimationReplacer-Math",
+            "requiredVersion": "1.0.0.0",
+            "Math Statement": {
+                "expression": "bSwitchGrips == 1",
+                "variables": {
+                    "bswitchgrips": {
+                        "graphVariable": "bSwitchGrips",
+                        "graphVariableType": "Bool"
+                    }
                 }
-              ]
-            },
-            {
-              "condition": "OR",
-              "requiredVersion": "1.0.0.0",
-              "conditions": [
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 5.0
-                  },
-                  "Left hand": false,
-                  "negated": false
-                },
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 6.0
-                  },
-                  "Left hand": false,
-                  "negated": false
-                }
-              ]
             }
-          ]
         },
         {
-          "condition": "OR",
-          "requiredVersion": "1.0.0.0",
-          "conditions": [
-            {
-              "condition": "OR",
-              "requiredVersion": "1.0.0.0",
-              "conditions": [
+            "condition": "AND",
+            "requiredVersion": "1.0.0.0",
+            "Conditions": [
                 {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 1.0
-                  },
-                  "Left hand": true,
-                  "negated": false
+                    "condition": "OR",
+                    "requiredVersion": "1.0.0.0",
+                    "Conditions": [
+                        {
+                            "condition": "OR",
+                            "requiredVersion": "1.0.0.0",
+                            "Conditions": [
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 1.0
+                                    },
+                                    "Left hand": false
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 2.0
+                                    },
+                                    "Left hand": false
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 3.0
+                                    },
+                                    "Left hand": false
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 4.0
+                                    },
+                                    "Left hand": false
+                                }
+                            ]
+                        },
+                        {
+                            "condition": "OR",
+                            "requiredVersion": "1.0.0.0",
+                            "Conditions": [
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 5.0
+                                    },
+                                    "Left hand": false
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 6.0
+                                    },
+                                    "Left hand": false
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 10.0
+                                    },
+                                    "Left hand": false
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 2.0
-                  },
-                  "Left hand": true,
-                  "negated": false
-                },
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 3.0
-                  },
-                  "Left hand": true,
-                  "negated": false
-                },
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 4.0
-                  },
-                  "Left hand": true,
-                  "negated": false
+                    "condition": "OR",
+                    "requiredVersion": "1.0.0.0",
+                    "Conditions": [
+                        {
+                            "condition": "OR",
+                            "requiredVersion": "1.0.0.0",
+                            "Conditions": [
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 1.0
+                                    },
+                                    "Left hand": true
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 2.0
+                                    },
+                                    "Left hand": true
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 3.0
+                                    },
+                                    "Left hand": true
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 4.0
+                                    },
+                                    "Left hand": true
+                                }
+                            ]
+                        },
+                        {
+                            "condition": "OR",
+                            "requiredVersion": "1.0.0.0",
+                            "Conditions": [
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 5.0
+                                    },
+                                    "Left hand": true
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 6.0
+                                    },
+                                    "Left hand": true
+                                },
+                                {
+                                    "condition": "IsEquippedType",
+                                    "requiredVersion": "1.0.0.0",
+                                    "Type": {
+                                        "value": 10.0
+                                    },
+                                    "Left hand": true
+                                }
+                            ]
+                        }
+                    ]
                 }
-              ]
-            },
-            {
-              "condition": "OR",
-              "requiredVersion": "1.0.0.0",
-              "conditions": [
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 5.0
-                  },
-                  "Left hand": true,
-                  "negated": false
-                },
-                {
-                  "condition": "IsEquippedType",
-                  "requiredVersion": "1.0.0.0",
-                  "Type": {
-                    "value": 6.0
-                  },
-                  "Left hand": true,
-                  "negated": false
-                }
-              ]
-            }
-          ]
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

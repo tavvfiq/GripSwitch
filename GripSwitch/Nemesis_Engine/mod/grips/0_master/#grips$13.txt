@@ -1,0 +1,40 @@
+		<hkobject name="#grips$13" class="hkbExpressionDataArray" signature="0x4b9ee1a2">
+			<hkparam name="expressionsData" numelements="6">
+				<hkobject>
+					<hkparam name="expression">TimeDeltaSmoothed = TimeDeltaSmoothed + 0.033333*(TimeDelta - TimeDeltaSmoothed)</hkparam>
+					<hkparam name="assignmentVariableIndex">-1</hkparam>
+					<hkparam name="assignmentEventIndex">-1</hkparam>
+					<hkparam name="eventMode">EVENT_MODE_SEND_ONCE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="expression">CurrentTime = CurrentTime + TimeDelta -1*((CurrentTime + TimeDelta) &gt;= 1.00)</hkparam>
+					<hkparam name="assignmentVariableIndex">-1</hkparam>
+					<hkparam name="assignmentEventIndex">-1</hkparam>
+					<hkparam name="eventMode">EVENT_MODE_SEND_ONCE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="expression">bNotSwitchGrips = !bSwitchGrips</hkparam>
+					<hkparam name="assignmentVariableIndex">-1</hkparam>
+					<hkparam name="assignmentEventIndex">-1</hkparam>
+					<hkparam name="eventMode">EVENT_MODE_SEND_ONCE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="expression">fSwitchGrips = fSwitchGrips + 10*TimeDeltaSmoothed*clamp(1.00*bSwitchGrips - fSwitchGrips, -0.5, 0.5)</hkparam>
+					<hkparam name="assignmentVariableIndex">-1</hkparam>
+					<hkparam name="assignmentEventIndex">-1</hkparam>
+					<hkparam name="eventMode">EVENT_MODE_SEND_ONCE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="expression">GripSwitchAdjust = 20*(1 - pow(2*fSwitchGrips - 1, 2))</hkparam>
+					<hkparam name="assignmentVariableIndex">-1</hkparam>
+					<hkparam name="assignmentEventIndex">-1</hkparam>
+					<hkparam name="eventMode">EVENT_MODE_SEND_ONCE</hkparam>
+				</hkobject>
+				<hkobject>
+					<hkparam name="expression">IsMoving = IsMoving + 5*TimeDeltaSmoothed*(1.00*(Speed &gt; 10) - IsMoving)</hkparam>
+					<hkparam name="assignmentVariableIndex">-1</hkparam>
+					<hkparam name="assignmentEventIndex">-1</hkparam>
+					<hkparam name="eventMode">EVENT_MODE_SEND_ONCE</hkparam>
+				</hkobject>
+			</hkparam>
+		</hkobject>

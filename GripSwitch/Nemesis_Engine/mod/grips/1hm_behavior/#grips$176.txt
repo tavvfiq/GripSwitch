@@ -1,0 +1,10 @@
+		<hkobject name="#grips$176" class="hkbManualSelectorGenerator" signature="0xd932fab8">
+			<hkparam name="variableBindingSet">#grips$178</hkparam>
+			<hkparam name="userData">0</hkparam>
+			<hkparam name="name">MeleeTurnLeft_TestLeftHand_2HW_MSG</hkparam>
+			<hkparam name="generators" numelements="11">
+				#grips$168 #grips$177 #grips$177 #grips$177 #grips$177 #grips$177 #grips$177 #grips$140 #grips$122 #grips$140 #grips$122
+			</hkparam>
+			<hkparam name="selectedGeneratorIndex">0</hkparam>
+			<hkparam name="currentGeneratorIndex">0</hkparam>
+		</hkobject>

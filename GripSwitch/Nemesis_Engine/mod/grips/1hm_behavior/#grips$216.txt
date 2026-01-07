@@ -1,0 +1,7 @@
+		<hkobject name="#grips$216" class="hkbModifierGenerator" signature="0x1f81fae6">
+			<hkparam name="variableBindingSet">null</hkparam>
+			<hkparam name="userData">1</hkparam>
+			<hkparam name="name">Weap_Idle_AdjustLWeapon_ModGenHW</hkparam>
+			<hkparam name="modifier">null</hkparam>
+			<hkparam name="generator">#4071</hkparam>
+		</hkobject>
