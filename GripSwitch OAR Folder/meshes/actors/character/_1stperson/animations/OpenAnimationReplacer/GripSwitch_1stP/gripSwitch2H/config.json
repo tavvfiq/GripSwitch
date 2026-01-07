@@ -1,0 +1,63 @@
+{
+    "name": "dynamicGrip2H",
+    "description": "1H -> 2H",
+    "priority": 880000,
+    "conditions": [
+        {
+            "condition": "MathStatement",
+            "requiredPlugin": "OpenAnimationReplacer-Math",
+            "requiredVersion": "1.0.0.0",
+            "Math Statement": {
+                "expression": "bSwitchGrips == 1",
+                "variables": {
+                    "bSwitchGrips": {
+                        "graphVariable": "bSwitchGrips",
+                        "graphVariableType": "Bool"
+                    }
+                }
+            }
+        },
+        {
+            "condition": "OR",
+            "requiredVersion": "1.0.0.0",
+            "conditions": [
+                {
+                    "condition": "IsEquippedType",
+                    "requiredVersion": "1.0.0.0",
+                    "Type": {
+                        "value": 1.0
+                    },
+                    "Left hand": false,
+                    "negated": false
+                },
+                {
+                    "condition": "IsEquippedType",
+                    "requiredVersion": "1.0.0.0",
+                    "Type": {
+                        "value": 2.0
+                    },
+                    "Left hand": false,
+                    "negated": false
+                },
+                {
+                    "condition": "IsEquippedType",
+                    "requiredVersion": "1.0.0.0",
+                    "Type": {
+                        "value": 3.0
+                    },
+                    "Left hand": false,
+                    "negated": false
+                },
+                {
+                    "condition": "IsEquippedType",
+                    "requiredVersion": "1.0.0.0",
+                    "Type": {
+                        "value": 4.0
+                    },
+                    "Left hand": false,
+                    "negated": false
+                }
+            ]
+        }
+    ]
+}

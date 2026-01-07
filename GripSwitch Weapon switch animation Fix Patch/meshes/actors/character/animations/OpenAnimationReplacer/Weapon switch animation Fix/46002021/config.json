@@ -1,0 +1,28 @@
+{
+    "name": "46002021",
+    "priority": 46002021,
+    "conditions": [
+        {
+            "condition": "IsEquippedType",
+            "requiredVersion": "1.0.0.0",
+            "Type": {
+                "value": 9.0
+            },
+            "Left hand": false
+        },
+        {
+            "condition": "MathStatement",
+            "requiredPlugin": "OpenAnimationReplacer-Math",
+            "requiredVersion": "1.0.0.0",
+            "Math Statement": {
+                "expression": "bSwitchGrips == 0",
+                "variables": {
+                    "bSwitchGrips": {
+                        "graphVariable": "bSwitchGrips",
+                        "graphVariableType": "Bool"
+                    }
+                }
+            }
+        }
+    ]
+}
