@@ -30,93 +30,90 @@ equipslot OneHandedSlot
 Int WeaponTypeRight
 weapon EquippedWeaponRight
 Bool DelayOnObjectEquippedEvent = false
-Float AttackControl_HoldTime = 0.000000
 Bool GripHotkey_ModifierIsHeld = false
 equipslot TwoHandedSlot
 Bool NoEquipEvents = false
-Bool AttackControl_IsHeld = false
 
 ;-- Functions ---------------------------------------
+function SwitchToNormalGrip()
+	if SkillsMatch.GetValue() == 1 as Float || EquippedWeaponRight.GetSkill() != WeaponSkill
+		EquippedWeaponRight.SetSkill(WeaponSkill)
+	endIf
+	self.DamageChangeMaintenance()
+	if !(PlayerRef as objectreference).GetAnimationVariableBool("IsAttacking")
+		SwitchBackSound.Play(PlayerRef as objectreference)
+	endIf
+	PlayerRef.SetAnimationVariableBool("bSwitchGrips", false)
+endFunction
 
-function OnControlUp(String control, Float HoldTime)
+function SwitchToAlternateGrip()
+	PlayerRef.SetAnimationVariableBool("bSwitchGrips", true)
+	if WeaponTypeRight >= 1 && WeaponTypeRight <= 4
+		if SkillsMatch.GetValue() == 1 as Float
+			EquippedWeaponRight.SetSkill("TwoHanded")
+		endIf
+	elseIf WeaponTypeRight == 5 || WeaponTypeRight == 6
+		if SkillsMatch.GetValue() == 1 as Float
+			EquippedWeaponRight.SetSkill("OneHanded")
+		endIf
+	endIf
+	self.DamageChangeMaintenance()
+	if !(PlayerRef as objectreference).GetAnimationVariableBool("IsAttacking")
+		SwitchToSound.Play(PlayerRef as objectreference)
+	endIf
+endFunction
 
-	if control == "Right Attack/Block"
-		AttackControl_HoldTime = 0.000000
-		AttackControl_IsHeld = false
+function ResetGripState(weapon akWeapon)
+	PlayerRef.SetAnimationVariableBool("bSwitchGrips", false)
+	
+	if akWeapon.GetWeaponType() >= 1 && akWeapon.GetWeaponType() <= 6
+		EquippedWeaponRight = akWeapon
+		WeaponTypeRight = EquippedWeaponRight.GetWeaponType()
+		WeaponSkill = EquippedWeaponRight.GetSkill()
+	elseIf (WeaponTypeRight == 5 || WeaponTypeRight == 6) && EquippedWeaponRight.GetEquipType() != OneHandedSlot
+		NoEquipEvents = true
+		PlayerRef.UnequipItem(EquippedWeaponRight as form, false, true)
+		EquippedWeaponRight.SetEquipType(OneHandedSlot)
+		PlayerRef.EquipItem(EquippedWeaponRight as form, false, true)
+		utility.waitmenumode(0.250000)
+		NoEquipEvents = false
 	endIf
 endFunction
 
 function OnKeyDown(Int KeyCode)
-
 	if KeyCode as Float == GripHotkey_ModifierHotkey.GetValue()
 		GripHotkey_ModifierIsHeld = true
 		return 
 	endIf
+	
 	if utility.IsInMenuMode() || InMenu as Bool
 		
 	endIf
-	if KeyCode == GripSwapMCM.BlockingHotkey
-		debug.SendAnimationEvent(PlayerRef as objectreference, "blockStart")
-		PlayerRef.SetAnimationVariableBool("bForceWantBlock", true)
-	endIf
+
 	if KeyCode as Float == GripHotkey.GetValue() && GripHotkey_DoubleTapEnabled.GetValue() == 1 as Float && !GripHotkey_DoubleTapReady
 		GripHotkey_DoubleTapReady = true
 		self.RegisterForSingleUpdate(0.200000)
 		return 
 	endIf
+
 	if ScriptON
 		return 
 	endIf
+
+	ScriptON = true
 	if EquippedWeaponRight as Bool && EquippedWeaponRight == PlayerRef.GetEquippedWeapon(false) && PlayerRef.IsWeaponDrawn()
-		ScriptON = true
 		if KeyCode as Float == GripHotkey.GetValue() && GripHotkey_ModifierEnabled.GetValue() == 0 as Float || KeyCode as Float == GripHotkey.GetValue() && GripHotkey_ModifierEnabled.GetValue() == 1 as Float && GripHotkey_ModifierIsHeld as Bool
-			if PlayerRef.GetAnimationVariableBool("bSwitchGrips") == true
-				PlayerRef.SetAnimationVariableBool("bSwitchGrips", false)
-				
-				; Unequip left hand weapon when switching back to normal grip
-				weapon leftWeapon = PlayerRef.GetEquippedWeapon(true)
-				if leftWeapon
-					NoEquipEvents = true
-					PlayerRef.UnequipItem(leftWeapon as form, false, true)
-					NoEquipEvents = false
-				endIf
-				
-				if WeaponTypeRight >= 1 && WeaponTypeRight <= 4
-					
-				elseIf WeaponTypeRight == 5 || WeaponTypeRight == 6
-					
-				endIf
-				if SkillsMatch.GetValue() == 1 as Float || EquippedWeaponRight.GetSkill() != WeaponSkill
-					EquippedWeaponRight.SetSkill(WeaponSkill)
-				endIf
-				self.DamageChangeMaintenance()
-				if !(PlayerRef as objectreference).GetAnimationVariableBool("IsAttacking")
-					SwitchBackSound.Play(PlayerRef as objectreference)
-				endIf
-			else
-				PlayerRef.SetAnimationVariableBool("bSwitchGrips", true)
-				
-				; Unequip left hand weapon when switching to two-handed grip
-				weapon leftWeapon = PlayerRef.GetEquippedWeapon(true)
-				if leftWeapon
-					NoEquipEvents = true
-					PlayerRef.UnequipItem(leftWeapon as form, false, true)
-					NoEquipEvents = false
-				endIf
-				
-				if WeaponTypeRight >= 1 && WeaponTypeRight <= 4
-					if SkillsMatch.GetValue() == 1 as Float
-						EquippedWeaponRight.SetSkill("TwoHanded")
-					endIf
-				elseIf WeaponTypeRight == 5 || WeaponTypeRight == 6
-					if SkillsMatch.GetValue() == 1 as Float
-						EquippedWeaponRight.SetSkill("OneHanded")
-					endIf
-				endIf
-				self.DamageChangeMaintenance()
+			weapon leftWeapon = PlayerRef.GetEquippedWeapon(true)
+			if leftWeapon
+				NoEquipEvents = true
+				PlayerRef.UnequipItem(leftWeapon as form, false, true)
+				NoEquipEvents = false
 			endIf
-			if !(PlayerRef as objectreference).GetAnimationVariableBool("IsAttacking")
-				SwitchToSound.Play(PlayerRef as objectreference)
+			
+			if PlayerRef.GetAnimationVariableBool("bSwitchGrips") == true
+				self.SwitchToNormalGrip()
+			else
+				self.SwitchToAlternateGrip()
 			endIf
 		endIf
 	endIf
@@ -124,13 +121,11 @@ function OnKeyDown(Int KeyCode)
 endFunction
 
 function OnPlayerLoadGame()
-
 	self.Initialization()
 	self.DamageChangeMaintenance()
 endFunction
 
 function SearchFor2HandedWeapons()
-
 	Int i = PlayerRef.GetNumItems() - 1
 	while i >= 0
 		form Item = PlayerRef.GetNthForm(i)
@@ -142,16 +137,12 @@ function SearchFor2HandedWeapons()
 endFunction
 
 ; Skipped compiler generated GetState
-
 function OnKeyUp(Int KeyCode, Float HoldTime)
 
 	if utility.IsInMenuMode() || InMenu as Bool
 		utility.wait(0.100000)
 	endIf
-	if KeyCode == GripSwapMCM.BlockingHotkey
-		debug.SendAnimationEvent(PlayerRef as objectreference, "blockStop")
-		PlayerRef.SetAnimationVariableBool("bForceWantBlock", false)
-	endIf
+
 	if KeyCode as Float == GripHotkey_ModifierHotkey.GetValue() && GripHotkey_ModifierEnabled.GetValue() == 1 as Float
 		GripHotkey_ModifierIsHeld = false
 	endIf
@@ -167,21 +158,14 @@ function OnObjectEquipped(form akBaseObject, objectreference akReference)
 	; Check if something is being equipped in left hand
 	utility.waitmenumode(0.100000)
 	if akBaseObject == PlayerRef.GetEquippedObject(0)
-		Bool shouldBlockLeftHand = false
-			
-		; Block left hand if 2H weapon in right hand with normal grip
+		; Auto-switch grip if 2H weapon in right hand with normal grip
 		if EquippedWeaponRight && (WeaponTypeRight == 5 || WeaponTypeRight == 6) && !PlayerRef.GetAnimationVariableBool("bSwitchGrips")
-			shouldBlockLeftHand = true
+			self.SwitchToAlternateGrip()
 		endIf
 			
-		; Block left hand if 1H weapon in right hand with switched grip
+		; Auto-switch grip if 1H weapon in right hand with switched grip
 		if EquippedWeaponRight && WeaponTypeRight >= 1 && WeaponTypeRight <= 4 && PlayerRef.GetAnimationVariableBool("bSwitchGrips")
-			shouldBlockLeftHand = true
-		endIf
-			
-		if shouldBlockLeftHand
-			PlayerRef.UnequipItem(akBaseObject, false, true)
-			debug.Notification("Switch grip first to use left hand")
+			self.SwitchToNormalGrip()
 		endIf
 	endIf
 	
@@ -190,21 +174,9 @@ function OnObjectEquipped(form akBaseObject, objectreference akReference)
 			ScriptON = true
 			weapon akWeapon = akBaseObject as weapon
 			
-			; Reset grip to normal
-			PlayerRef.SetAnimationVariableBool("bSwitchGrips", false)
+			; Reset grip to normal and track weapon
+			self.ResetGripState(akWeapon)
 			
-			if akWeapon.GetWeaponType() >= 1 && akWeapon.GetWeaponType() <= 6
-				EquippedWeaponRight = akWeapon
-				WeaponTypeRight = EquippedWeaponRight.GetWeaponType()
-				WeaponSkill = EquippedWeaponRight.GetSkill()
-			elseIf (WeaponTypeRight == 5 || WeaponTypeRight == 6) && EquippedWeaponRight.GetEquipType() != OneHandedSlot
-				NoEquipEvents = true
-				PlayerRef.UnequipItem(EquippedWeaponRight as form, false, true)
-				EquippedWeaponRight.SetEquipType(OneHandedSlot)
-				PlayerRef.EquipItem(EquippedWeaponRight as form, false, true)
-				utility.waitmenumode(0.250000)
-				NoEquipEvents = false
-			endIf
 			ScriptON = false
 		endIf
 	endIf
@@ -214,18 +186,6 @@ function Initialization()
 
 	self.RegisterForAllMenus()
 	self.SearchFor2HandedWeapons()
-endFunction
-
-function OnControlDown(String control)
-
-	if control == "Right Attack/Block" && !utility.IsInMenuMode() && !(PlayerRef as objectreference).GetAnimationVariableBool("Isblocking") && !(PlayerRef as objectreference).GetAnimationVariableBool("IsBashing")
-		AttackControl_HoldTime = 0.000000
-		AttackControl_IsHeld = true
-		utility.wait(0.100000)
-		if AttackControl_IsHeld
-			self.RegisterForSingleUpdate(0.200000)
-		endIf
-	endIf
 endFunction
 
 function OnObjectUnequipped(form akBaseObject, objectreference akReference)
@@ -256,7 +216,6 @@ function DamageChangeMaintenance()
 endFunction
 
 function RegisterForAllMenus()
-
 	self.RegisterForMenu("BarterMenu")
 	self.RegisterForMenu("Book Menu")
 	self.RegisterForMenu("Console")
@@ -296,7 +255,6 @@ function RegisterForAllMenus()
 endFunction
 
 function OnInit()
-
 	utility.wait(2 as Float)
 	OneHandedSlot = game.GetForm(81730) as equipslot
 	TwoHandedSlot = game.GetForm(81733) as equipslot
@@ -314,12 +272,10 @@ endFunction
 ; Skipped compiler generated GotoState
 
 function OnMenuClose(String MenuName)
-
 	utility.wait(0.700000)
 	InMenu = false
 endFunction
 
 function OnMenuOpen(String MenuName)
-
 	InMenu = true
 endFunction

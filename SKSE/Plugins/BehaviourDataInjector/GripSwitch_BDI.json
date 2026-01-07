@@ -1,0 +1,8 @@
+[
+    {
+        "projectPath": "actors\\Character",
+        "type": "kBool",
+        "name": "bSwitchGrips",
+        "value": false      
+    }
+]
